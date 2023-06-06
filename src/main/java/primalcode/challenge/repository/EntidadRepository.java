@@ -14,8 +14,11 @@ public interface EntidadRepository extends JpaRepository<Entidad, Long> {
     // Add any custom query methods or overrides if needed
     @Query("SELECT e FROM Entidad e JOIN FETCH e.tipoDocumento JOIN FETCH e.tipoContribuyente")
     List<Entidad> findAllWithNames();
+}
 
-    /*
+
+
+/*
     @Query("SELECT new primalcode.challenge.model.TipoDocumentoContribuyenteDTO(td.idTipoDocumento, td.codigo, td.nombre, td.descripcion, tc.idTipoContribuyente, tc.nombre) FROM TipoDocumento td, TipoContribuyente tc")
     List<TipoDocumentoContribuyenteDTO> findAllTipoDocumentoAndTipoContribuyente();
    */
@@ -26,5 +29,4 @@ public interface EntidadRepository extends JpaRepository<Entidad, Long> {
     /*
     @Query(value = "SELECT td.id_tipo_documento, td.codigo, td.nombre, td.descripcion, tc.id_tipo_contribuyente, tc.nombre FROM tb_tipo_documento td, tb_tipo_contribuyente tc WHERE td.estado = true AND tc.estado = true", nativeQuery = true)
     List<Object[]> findAllTipoDocumentoAndTipoContribuyente();
-    */
-}
+     */

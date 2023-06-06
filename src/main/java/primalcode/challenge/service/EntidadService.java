@@ -64,8 +64,6 @@ public class EntidadService {
     public Map<String, List<?>> getAllTipoDocumentoAndTipoContribuyente() {
         List<TipoDocumento> tipoDocumentos = tipoDocumentoRepository.findAllByEstadoTrue();
         List<TipoContribuyente> tipoContribuyentes = tipoContribuyenteRepository.findAllByEstadoTrue();
-        //List<Object[]> tipoDocumentos = tipoDocumentoRepository.findAllTipoDocumentos();
-        //List<Object[]> tipoContribuyentes = tipoContribuyenteRepository.findAllTipoContribuyentes();
 
         System.out.println(tipoContribuyentes);
         System.out.println(tipoDocumentos);
