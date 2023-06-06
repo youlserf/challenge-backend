@@ -108,4 +108,13 @@ public class Entidad {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
+    public String getTipoDocumentoNombre() {
+        return tipoDocumento != null ? tipoDocumento.getNombre() : null;
+    }
+
+    public String getTipoContribuyenteNombre() {
+        return tipoContribuyente != null ? tipoContribuyente.getNombre() : null;
+    }
+
 }
