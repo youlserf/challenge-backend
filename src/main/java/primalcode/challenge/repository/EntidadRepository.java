@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import primalcode.challenge.model.Entidad;
-import primalcode.challenge.model.TipoDocumentoContribuyenteDTO;
 
 import java.util.List;
 

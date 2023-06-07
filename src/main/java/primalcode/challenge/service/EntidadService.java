@@ -1,17 +1,14 @@
 package primalcode.challenge.service;
 
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import primalcode.challenge.model.Entidad;
 import primalcode.challenge.model.TipoContribuyente;
 import primalcode.challenge.model.TipoDocumento;
-import primalcode.challenge.model.TipoDocumentoContribuyenteDTO;
 import primalcode.challenge.repository.EntidadRepository;
 import primalcode.challenge.repository.TipoContribuyenteRepository;
 import primalcode.challenge.repository.TipoDocumentoRepository;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
