@@ -1,6 +1,8 @@
 package primalcode.challenge.config;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,4 +46,8 @@ public class ApplicationConfig {
     return new BCryptPasswordEncoder();
   }
 
+  @Bean
+  public ObjectMapper objectMapper() {
+    return new ObjectMapper().disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+  }
 }

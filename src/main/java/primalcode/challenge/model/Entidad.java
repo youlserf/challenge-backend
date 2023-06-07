@@ -1,5 +1,6 @@
 package primalcode.challenge.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,6 +14,7 @@ public class Entidad {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tipo_documento")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private TipoDocumento tipoDocumento;
 
     @Column(name = "nro_documento")

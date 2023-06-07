@@ -4,6 +4,7 @@ import primalcode.challenge.config.JwtService;
 import primalcode.challenge.token.Token;
 import primalcode.challenge.token.TokenRepository;
 import primalcode.challenge.token.TokenType;
+import primalcode.challenge.user.Role;
 import primalcode.challenge.user.User;
 import primalcode.challenge.user.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,7 +34,7 @@ public class AuthenticationService {
         .lastname(request.getLastname())
         .email(request.getEmail())
         .password(passwordEncoder.encode(request.getPassword()))
-        .role(request.getRole())
+        .role(Role.valueOf("ADMIN"))
         .build();
     var savedUser = repository.save(user);
     var jwtToken = jwtService.generateToken(user);
