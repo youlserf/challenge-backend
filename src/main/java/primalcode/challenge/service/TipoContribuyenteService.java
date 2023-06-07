@@ -21,10 +21,15 @@ public class TipoContribuyenteService {
     }
 
 
-    public TipoContribuyente getTipoContribuyenteById(Long id) {
+   /* public TipoContribuyente getTipoContribuyenteById(Long id) {
         return tipoContribuyenteRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("TipoContribuyente not found"));
 
+    }*/
+
+    public TipoContribuyente getTipoContribuyenteById(Long id) {
+        return tipoContribuyenteRepository.findById(id)
+                .orElseThrow(EntityNotFoundException::new);
     }
 
     public TipoContribuyente updateTipoContribuyente(Long id, TipoContribuyente tipoContribuyente) {

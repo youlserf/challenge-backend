@@ -32,6 +32,8 @@ public class TipoDocumentoController {
 
     @PostMapping
     public ResponseEntity<TipoDocumento> createTipoDocumento(@RequestBody TipoDocumento tipoDocumento) {
+        System.out.println("hi there");
+        System.out.println(tipoDocumento);
         TipoDocumento createdTipoDocumento = tipoDocumentoService.createTipoDocumento(tipoDocumento);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdTipoDocumento);
     }

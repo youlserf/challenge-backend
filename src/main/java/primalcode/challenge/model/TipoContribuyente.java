@@ -16,6 +16,8 @@ public class TipoContribuyente {
 
     @Column(name = "estado")
     private boolean estado;
+    public TipoContribuyente(int i, String s, boolean b) {
+    }
 
     public Integer getIdTipoContribuyente() {
         return idTipoContribuyente;

@@ -4,9 +4,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import primalcode.challenge.model.Entidad;
+import primalcode.challenge.model.TipoContribuyente;
 import primalcode.challenge.service.EntidadService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/entidad")
@@ -19,15 +21,25 @@ public class EntidadController {
     }
     @GetMapping
     public ResponseEntity<List<Entidad>> getAllEntities() {
-        List<Entidad> entidades = entidadService.getAllEntidades();
+        List<Entidad> entidades = entidadService.getAllEntidadesWithNames();
         return ResponseEntity.ok(entidades);
     }
+
+    @GetMapping("/docont")
+    public ResponseEntity<Map<String, List<?>>> getAllTipoDocumentoAndTipoContribuyente() {
+        Map<String, List<?>> tipoDocumentoAndTipoContribuyente = entidadService.getAllTipoDocumentoAndTipoContribuyente();
+        return ResponseEntity.ok(tipoDocumentoAndTipoContribuyente);
+    }
+
+
+
     @GetMapping("/{id}")
     public ResponseEntity<Entidad> getEntidadById(@PathVariable("id") Long id) {
+
+        System.out.println(id);
         Entidad entidad = entidadService.getEntidadById(id);
         return ResponseEntity.ok(entidad);
     }
-
     @PostMapping
     public ResponseEntity<Entidad> createEntidad(@RequestBody Entidad entidad) {
         Entidad createdEntidad = entidadService.createEntidad(entidad);

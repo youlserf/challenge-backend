@@ -4,16 +4,28 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import primalcode.challenge.model.Entidad;
+import primalcode.challenge.model.TipoContribuyente;
+import primalcode.challenge.model.TipoDocumento;
+import primalcode.challenge.model.TipoDocumentoContribuyenteDTO;
 import primalcode.challenge.repository.EntidadRepository;
+import primalcode.challenge.repository.TipoContribuyenteRepository;
+import primalcode.challenge.repository.TipoDocumentoRepository;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class EntidadService {
     private final EntidadRepository entidadRepository;
+    private final TipoDocumentoRepository tipoDocumentoRepository;
+    private final TipoContribuyenteRepository tipoContribuyenteRepository;
 
-    public EntidadService(EntidadRepository entidadRepository) {
+    public EntidadService(EntidadRepository entidadRepository, TipoDocumentoRepository tipoDocumentoRepository, TipoContribuyenteRepository tipoContribuyenteRepository) {
         this.entidadRepository = entidadRepository;
+        this.tipoDocumentoRepository = tipoDocumentoRepository;
+        this.tipoContribuyenteRepository = tipoContribuyenteRepository;
     }
 
     public Entidad createEntidad(Entidad entidad) {
@@ -44,6 +56,32 @@ public class EntidadService {
     public List<Entidad> getAllEntidades() {
         return entidadRepository.findAll();
     }
+
+    public List<Entidad> getAllEntidadesWithNames() {
+        return entidadRepository.findAllWithNames();
+    }
+
+    public Map<String, List<?>> getAllTipoDocumentoAndTipoContribuyente() {
+        List<TipoDocumento> tipoDocumentos = tipoDocumentoRepository.findAllByEstadoTrue();
+        List<TipoContribuyente> tipoContribuyentes = tipoContribuyenteRepository.findAllByEstadoTrue();
+
+        System.out.println(tipoContribuyentes);
+        System.out.println(tipoDocumentos);
+
+        Map<String, List<?>> result = new HashMap<>();
+        result.put("tipoDocumentos", tipoDocumentos);
+        result.put("tipoContribuyentes", tipoContribuyentes);
+
+        return result;
+    }
+
+
+
+    /*
+    public List<TipoDocumentoContribuyenteDTO> getAllTipoDocumentoAndTipoContribuyente() {
+        return entidadRepository.findAllTipoDocumentoAndTipoContribuyente();
+    }
+*/
 
     public void deleteEntidad(Long id) {
         entidadRepository.deleteById(id);
